@@ -1,0 +1,57 @@
+.MuiLinearProgress-root {
+    height: 8px!important;
+    margin-top:10px;
+    margin-bottom: 16px;
+
+}
+
+.MuiGrid-spacing-xs-3{
+    width: 100% !important; 
+    margin: 0px !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.MuiLinearProgress-bar {
+    border-radius: 25px;
+}
+
+.MuiSvgIcon-fontSizeSmall{
+    margin-bottom: 5px;
+}
+
+.liRating{
+    margin-top:9px!important;
+    margin-bottom: 19px!important;
+}
+
+#ulRatingProgress{
+    padding-left: 5px;
+}
+
+.liRatingcount{
+    margin-top:1px!important;
+    margin-bottom: 3px!important;
+}
+
+.liInfluence{
+    margin-top:10px!important;
+    margin-bottom:15px!important;
+}
+
+.thumsUp{
+    color:#72AE44
+}
+
+.thumsDn{
+    color:#e84133
+}
+
+
+@media screen and (max-width: 420px) {
+    #InfluenceThumb{
+        max-width:300px;
+    }
+  }

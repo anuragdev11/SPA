@@ -1,0 +1,116 @@
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon .MuiAutocomplete-inputRoot {
+    padding-right: 30px!important;
+    height: 35px;
+}
+
+.MuiInput-underline:before {
+    border: 1px solid rgb(0,0,0,0.42)!important;
+    height: 35px!important;
+    top:0px!important;
+    border-radius: 4px!important;
+    opacity: 0.7!important;
+
+}
+
+.MuiInput-root{
+    width: 140px;
+}
+
+.MuiAutocomplete-inputRoot .MuiAutocomplete-input{
+    height: 0px !important;
+}
+
+#strtDt {
+    padding-left: 45px!important;
+    padding-top: 8px!important;
+    width:200px;
+}
+
+#endDt {
+    padding-left: 45px!important;
+    padding-top: 8px!important;
+}
+
+#DatePickerContainer{
+    width:150px!important;
+
+}
+
+.MuiInput-underline:after{
+    bottom:-1px!important;
+}
+
+.MuiTimelineOppositeContent-root {
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+}
+
+.MuiTimelineDot-defaultGrey {
+    background-color: #00A699!important ;
+}
+
+#divTitle {
+    background-color: #2E3192!important ;
+    border: 0.5px grey solid;
+    border-radius: 4px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 563px;    
+}
+
+#ActivityLog {
+    margin-bottom: 0px !important;
+}
+
+#Time{
+    padding-bottom: 16px;
+}
+
+#google{
+    background-color: white !important;
+}
+
+.MuiTimeline-root{
+    padding: 0px 16px !important;
+    
+}
+
+.Csl-paper-1{
+    width:355px !important;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 10px;
+    display: none;
+}
+
+
+::-webkit-scrollbar-track {
+    width: 25px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #d4d2d2;
+    width: 20px;
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+.MuiPaper-root{
+    bottom: 100px!important;
+}
+
+#divPaper{
+    width:355px!important;
+}

@@ -1,0 +1,19 @@
+.MuiAvatarGroup-avatar{
+    border:1px solid #919191!important;
+    margin-right:1px;
+}
+
+
+
+#PhotoAvatar{    
+    margin-left : 0px!important;
+}
+
+#extraAvatar {
+    right: 78px!important;
+    z-index: 10!important;
+    margin-top:auto!important ;
+    margin-bottom:auto!important ;
+    margin-left : 0px!important;
+}
+
