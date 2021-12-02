@@ -6,6 +6,7 @@ import { init as initApm } from '@elastic/apm-rum'
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-28761981-1');
 let Report = "";
+
 class App extends Component {
   constructor(props) {
     super(props);
