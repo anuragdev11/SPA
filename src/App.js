@@ -1,4 +1,3 @@
-// My first git commit
 import React, { Component,Suspense, lazy } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
