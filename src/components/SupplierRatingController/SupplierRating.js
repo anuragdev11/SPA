@@ -25,6 +25,7 @@ import Gallery from './Gallery';
 
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
