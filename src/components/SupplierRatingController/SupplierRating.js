@@ -483,15 +483,13 @@ export default function CenteredGrid(props) {
 				  : null}	
 				  
                       <tr>
-                        <td colSpan="1" ></td>
-                        <td colSpan="2" style={{textAlign:"left"}} >
+                        <td colSpan="2" style={{textAlign:"left", paddingLeft:"5px"}} >
                         <Typography component="p" style={{color:"#000"}}>{ReviewData[key].GLUSR_RATING_COMMENTS}</Typography>
                         </td>
                       </tr>
                       <tr>
-                        <td colSpan="1" ></td>
                         <td colSpan="3" style={{display:ReviewData[key].RATING_INFLU_PARAMS_NAME === "" ? "none" : "revert", }} >
-                          <div id="InfluenceThumb" style={{display:"flex"}}>                            
+                          <div id="InfluenceThumb" style={{display:"flex", paddingLeft:"4px"}}>                            
                               {
                                 ReviewData[key].RATING_INFLU_PARAMS_NAME === "" ?
                                 ""
@@ -503,12 +501,21 @@ export default function CenteredGrid(props) {
                       </tr>
                       {ReviewData[key].RATING_IMGS !== "null" ?  
                         <tr>
-                          <td colSpan="3" >
+                          <td colSpan="3">
                             <Gallery images={ReviewData[key].RATING_IMGS} />
                           </td>
                         </tr>
                        : null}
-					   
+                       {ReviewData[key].RATING_REVIEW_USEFULNESS !== null ?
+                       <tr> 
+                         <td colspan="2">
+                           <div id="div" style={{fontSize:"12px",paddingRight:"126px"}}>{ReviewData[key].RATING_REVIEW_USEFULNESS} people found this helpful. </div>
+                          </td>
+                        </tr>
+                       :
+                       null
+                       }
+
 					   {ReviewData[key].SUPPLIER_COMMENTS !== "" ?  
 					   	  <tr>
                         <td colspan="2" style={{textAlign:"left",color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}><span>Seller replied</span></td>
