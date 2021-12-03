@@ -23,6 +23,8 @@ import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import InfluenceThumbs from './Influence_thumbs';
 import Gallery from './Gallery';
 
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
