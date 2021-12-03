@@ -509,7 +509,7 @@ export default function CenteredGrid(props) {
                        {ReviewData[key].RATING_REVIEW_USEFULNESS !== null ?
                        <tr> 
                          <td colspan="2">
-                           <div id="div" style={{fontSize:"12px",paddingRight:"126px"}}>{ReviewData[key].RATING_REVIEW_USEFULNESS} people found this helpful. </div>
+                           <div id="div" style={{fontSize:"12px",paddingRight:"125px"}}>{ReviewData[key].RATING_REVIEW_USEFULNESS} people found this helpful. </div>
                           </td>
                         </tr>
                        :
