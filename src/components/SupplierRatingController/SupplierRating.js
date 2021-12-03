@@ -18,6 +18,7 @@ import SortIcon from '@material-ui/icons/Sort';
 import Loader from '../../assets/logos/PulseLoader.svg';
 import Typography from '@material-ui/core/Typography';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import InfluenceThumbs from './Influence_thumbs';
 import Gallery from './Gallery'
@@ -38,8 +39,12 @@ const useStyles = makeStyles((theme) => ({
   },
   nameTag: {
     fontSize:'14px',
-    color:'#2E3192',
+    color:'#000000',
     fontWeight:'bold'
+  },
+  LocationTag: {
+    fontSize:'12px',
+    color:'#585857'
   }
 }));
 
@@ -103,7 +108,7 @@ export default function CenteredGrid(props) {
   const [ReviewData,setReviewData] = React.useState({})
   const [ReviewKeys,setReviewKeys] = React.useState([])
   const [isLoading,setisLoading] = React.useState(true)
-  const [inPercentage, setinPercentage] = React.useState(0)
+   const [inPercentage, setinPercentage] = React.useState(0)
   const [countFiveStar, setcountFiveStar] = React.useState(0)
   const [countFourStar, setcountFourStar] = React.useState(0)
   const [countThreeStar, setcountThreeStar] = React.useState(0)
@@ -128,6 +133,9 @@ export default function CenteredGrid(props) {
   const [Only_Comment,setOnly_Comment] = React.useState([])
   let url = "https://merp.intermesh.net/go/supplierrating/v1/ratingdetails?"
   url += "glid=" + props.glid + "&empid=" + props.employeeid + "&AK=" + props.AK 
+  
+
+  
   React.useEffect(() => {
     async function fetchData(){
       await fetch(url,{
@@ -140,8 +148,8 @@ export default function CenteredGrid(props) {
           .then(function (response) {          
             //console.log(response.status)
             if(response.status === 200){
-              
-              setinPercentage(response.data.in_percentage)
+				
+               setinPercentage(response.data.in_percentage)
               setReviewData(response.data.rating_list)
               setcountFiveStar(response.data.rating_counts.five_star_count)
               setcountFourStar(response.data.rating_counts.four_star_count)
@@ -311,7 +319,6 @@ export default function CenteredGrid(props) {
       </>
     );
   }
-
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -367,7 +374,7 @@ export default function CenteredGrid(props) {
             </li>
           </ul>
           <ul style={{listStyle:'none',paddingLeft:'0px',marginLeft:'-3vw'}}>
-            {htmlRating}
+         {htmlRating}
           </ul>
         </Grid>
         
@@ -441,23 +448,37 @@ export default function CenteredGrid(props) {
                   <table>
                     <tbody>
                       <tr style={{width:"100%"}}>
-                        <td style={{width:"10%",textAlign:"left"}}>
+                        <td style={{width:"5%",textAlign:"left"}}>
+                          <Avatar className={classes.small} style={{backgroundColor: "#267E3E", borderRadius: "14%" , width: "40px", height: "35px"}} > <span style={{fontSize:"13px", fontWeight:'bold'}}>{ReviewData[key].GLUSR_RATING_VALUE}</span><Star style={{fontSize:"13px"}} /></Avatar>
+                        </td>
 
-                          <Avatar className={classes.small} style={{backgroundColor: randomColor()}} >{ReviewData[key].BUYER_NAME[0] !== undefined ? ReviewData[key].BUYER_NAME[0] : 'I'}</Avatar>
+                        {ReviewData[key].BUYER_COUNTRY_NAME === "India" ?   
+                          <td style={{width:"65%",textAlign:"left", lineHeight:"1rem"}} >
+                       <span className={classes.nameTag}>{ReviewData[key].BUYER_NAME}</span> <br/>
+					   <span className={classes.LocationTag}>{ReviewData[key].BUYER_COMPANY_NAME !== "" ? ReviewData[key].BUYER_COMPANY_NAME : '' } </span>
+					   <span style={{fontSize:"10px"}}>{ReviewData[key].BUYER_COMPANY_NAME !== "" ? '|' : '' } </span>
+					   <span className={classes.LocationTag}>{ReviewData[key].BUYER_CITY_NAME}</span> {ReviewData[key].BUYER_CITY_NAME === "" ? '' : ',' } <span className={classes.LocationTag}>{ReviewData[key].BUYER_COUNTRY_NAME}</span>
+                          </td>
+                       : 
+                       <td style={{width:"65%",textAlign:"left" , lineHeight:"1rem"}} >
+                       <span className={classes.nameTag}>{ReviewData[key].BUYER_NAME}</span> <br/>
+					    <span className={classes.LocationTag}>{ReviewData[key].BUYER_COMPANY_NAME !== "" ? ReviewData[key].BUYER_COMPANY_NAME : '' } </span>
+					   <span style={{fontSize:"10px"}}>{ReviewData[key].BUYER_COMPANY_NAME !== "" ? '|' : '' } </span>
+					  <span className={classes.LocationTag}>{ReviewData[key].BUYER_COUNTRY_NAME}</span>
+                          </td>
+                       }
+					   <td style={{width:"30%"}}>
+                           <p style={{color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}>{ ReviewData[key].GLUSR_RATING_DATE !== "" ? formatDate(ReviewData[key].GLUSR_RATING_DATE): ""}</p>
                         </td>
-                        <td style={{width:"90%",textAlign:"left"}} colSpan="2" >
-                          <span className={classes.nameTag}>{ReviewData[key].BUYER_NAME}</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style={{width:"10%"}}></td>
-                        <td style={{width:"35%",textAlign:"left"}}>
-                        <Rating defaultValue={ReviewData[key].GLUSR_RATING_VALUE} precision={0.5} readOnly size="small" style={{width:"75%"}} value={ReviewData[key].GLUSR_RATING_VALUE} />
-                        </td>
-                        <td style={{width:"55%",textAlign:"left"}}>
-                          <p className=".makeStyles-paper-2" style={{color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}>{ ReviewData[key].GLUSR_RATING_DATE !== "" ? formatDate(ReviewData[key].GLUSR_RATING_DATE): ""}</p>
-                        </td>
-                      </tr>
+                      </tr>    
+				  {ReviewData[key].RATING_MCAT_NAME === "" ? 	  
+					<tr>
+						<td colspan="3" style={{textAlign:"left"}}>
+						<ShoppingCartIcon className="ShoppingCartOutlined"/> <span className={classes.nameTag}>Mobile Repair Part</span>	
+						</td>
+					</tr>					  
+				  : null}	
+				  
                       <tr>
                         <td colSpan="1" ></td>
                         <td colSpan="2" style={{textAlign:"left"}} >
@@ -484,6 +505,21 @@ export default function CenteredGrid(props) {
                           </td>
                         </tr>
                        : null}
+					   
+					   {ReviewData[key].SUPPLIER_COMMENTS !== "" ?  
+					   	  <tr>
+                        <td colspan="2" style={{textAlign:"left",color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}><span>Seller replied</span></td>
+						<td colspan ="1"><p style={{color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}>{ReviewData[key].GLUSR_RATING_REPLY_DATE}</p></td>                    						
+                      </tr>	
+					   : null}
+					    {ReviewData[key].SUPPLIER_COMMENTS !== "" ? 
+					  <tr>
+					  	<td colspan = "3" style={{textAlign:"left"}}>
+						<Typography component="p" style={{color:"#000"}}>{ReviewData[key].GLUSR_RATING_COMMENTS}</Typography>
+						</td> 
+					  </tr>
+						:null}
+					  
                       </tbody>           
                   </table>
                   
