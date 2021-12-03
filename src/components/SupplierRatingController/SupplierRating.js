@@ -300,7 +300,7 @@ export default function CenteredGrid(props) {
     }
   };
   var htmlRating;
-  if(inPercentage == 0){
+  if(inPercentage === 0){
     htmlRating=(
       <>
       <li className="liRatingcount" >{countFiveStar}  </li>
