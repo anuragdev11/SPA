@@ -21,7 +21,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import InfluenceThumbs from './Influence_thumbs';
-import Gallery from './Gallery'
+import Gallery from './Gallery';
 
 const useStyles = makeStyles((theme) => ({
   root: {
