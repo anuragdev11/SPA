@@ -152,7 +152,7 @@ export default function CenteredGrid(props) {
             //console.log(response.status)
             if(response.status === 200){
 				
-               setinPercentage(response.data.in_percentage)
+              setinPercentage(response.data.in_percentage)
               setReviewData(response.data.rating_list)
               setcountFiveStar(response.data.rating_counts.five_star_count)
               setcountFourStar(response.data.rating_counts.four_star_count)
