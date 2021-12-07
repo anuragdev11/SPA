@@ -149,7 +149,6 @@ export default function CenteredGrid(props) {
       })
       .then(res => res.json())
           .then(function (response) {          
-            //console.log(response.status)
             if(response.status === 200){
 				
               setinPercentage(response.data.in_percentage)
@@ -293,7 +292,7 @@ export default function CenteredGrid(props) {
       }
       if(LowtoHigh !== undefined && LowtoHigh.length>0){        
         setReviewKeys([...LowtoHigh])
-        }
+      }
     }
     else if(event.target.value === 4){
         setReviewKeys([...Only_Comment])
@@ -434,9 +433,14 @@ export default function CenteredGrid(props) {
               onChange={handleFilterChange}
             >
               <MenuItem value={1}>Most Recent</MenuItem>
+              <MenuItem value={5}>Most Previous</MenuItem>
               <MenuItem value={2}>Review: High to Low</MenuItem>
               <MenuItem value={3}>Review: Low to High</MenuItem>
               <MenuItem value={4}>Review: With Comments</MenuItem>
+              <MenuItem value={6}>With Images</MenuItem>
+              <MenuItem value={7}>Highest Helpful Count</MenuItem>
+              <MenuItem value={8}>Top Reviews</MenuItem>
+              
             </Select>
           </FormControl>
         </Grid>
