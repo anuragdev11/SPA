@@ -492,7 +492,7 @@ export default function CenteredGrid(props) {
               <MenuItem value={4}>Review: With Comments</MenuItem>
               <MenuItem value={6}>With Images</MenuItem>
               <MenuItem value={7}>Highest Helpful Count</MenuItem>
-              <MenuItem value={8}>Top Reviews</MenuItem>
+              {/* <MenuItem value={8}>Top Reviews</MenuItem> */}
               
             </Select>
           </FormControl>
@@ -530,19 +530,6 @@ export default function CenteredGrid(props) {
 					   <td style={{width:"30%"}}>
                            <p style={{color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}>{ ReviewData[key].GLUSR_RATING_DATE !== "" ? formatDate(ReviewData[key].GLUSR_RATING_DATE): ""}</p>
                         </td>
-                      </tr>    
-				  {ReviewData[key].RATING_MCAT_NAME === "" ? 	  
-					<tr>
-						<td colspan="3" style={{textAlign:"left"}}>
-						<ShoppingCartIcon className="ShoppingCartOutlined"/> <span className={classes.nameTag}>Mobile Repair Part</span>	
-						</td>
-					</tr>					  
-				  : null}	
-				  
-                      <tr>
-                        <td colSpan="2" style={{textAlign:"left", paddingLeft:"5px"}} >
-                        <Typography component="p" style={{color:"#000"}}>{ReviewData[key].GLUSR_RATING_COMMENTS}</Typography>
-                        </td>
                       </tr>
                       <tr>
                         <td colSpan="3" style={{display:ReviewData[key].RATING_INFLU_PARAMS_NAME === "" ? "none" : "revert", }} >
@@ -555,7 +542,21 @@ export default function CenteredGrid(props) {
                               }
                           </div>
                         </td>
+                      </tr>    
+				  {ReviewData[key].RATING_MCAT_NAME !== "" ? 	  
+					<tr>
+						<td colspan="3" style={{textAlign:"left"}}>
+						<ShoppingCartIcon className="ShoppingCartOutlined"/> <span className={classes.nameTag}>{ReviewData[key].RATING_MCAT_NAME}</span>	
+						</td>
+					</tr>					  
+				  : null}	
+				  
+                      <tr>
+                        <td colSpan="2" style={{textAlign:"left", paddingLeft:"5px"}} >
+                        <Typography component="p" style={{color:"#000"}}>{ReviewData[key].GLUSR_RATING_COMMENTS}</Typography>
+                        </td>
                       </tr>
+                     
                       {ReviewData[key].RATING_IMGS !== "null" ?  
                         <tr>
                           <td colSpan="3">
