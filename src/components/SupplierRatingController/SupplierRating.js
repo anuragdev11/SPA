@@ -245,7 +245,6 @@ export default function CenteredGrid(props) {
               NoComments=SortArray(NoComments)
               setOnly_Comment(OnlyComments.concat(NoComments))
 
-              debugger;
               helpful_count.sort((a,b)=>a[1]-b[1]) // sort keys on the basis helpful count value
               helpful_count=helpful_count.map(ele=> ele[0]) // remove only keys from key-value array
               helpful_count=helpful_count.reverse()
