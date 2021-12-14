@@ -138,6 +138,8 @@ function OSTable(props){
         result.push(colTotalDeals);
         result.push(colTotalCheques);
         finalResult.push(result);
+        console.log("Final Data")
+        console.log(finalResult)
         return finalResult
     };
 

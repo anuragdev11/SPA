@@ -153,7 +153,7 @@ export default function CenteredGrid(props) {
       },
       })
       .then(res => res.json())
-          .then(function (response) {          
+          .then(function (response) {   
             if(response.status === 200){
               setinPercentage(response.data.in_percentage)
               setReviewData(response.data.rating_list)
@@ -184,7 +184,7 @@ export default function CenteredGrid(props) {
                 setinflu_delivery(parseInt(Delivery_Influence[0]))
               }
               if(response.data.rating_influ_params_name.Behaviour !== undefined){
-                var Behaviour_Influence = response.data.rating_influ_params_name.Delivery.split(',')
+                var Behaviour_Influence = response.data.rating_influ_params_name.Behaviour.split(',')
                 setinflu_behaviour(parseInt(Behaviour_Influence[0]))
               }
               
@@ -248,6 +248,7 @@ export default function CenteredGrid(props) {
               helpful_count.sort((a,b)=>a[1]-b[1]) // sort keys on the basis helpful count value
               helpful_count=helpful_count.map(ele=> ele[0]) // remove only keys from key-value array
               helpful_count=helpful_count.reverse()
+              without_helpful_count=SortArray(without_helpful_count)
               setHighest_HelpfulCount(helpful_count.concat(without_helpful_count))
 
               onlyImage=SortArray(onlyImage)
@@ -517,7 +518,7 @@ export default function CenteredGrid(props) {
                        <span className={classes.nameTag}>{ReviewData[key].BUYER_NAME}</span> <br/>
 					   <span className={classes.LocationTag}>{ReviewData[key].BUYER_COMPANY_NAME !== "" ? ReviewData[key].BUYER_COMPANY_NAME : '' } </span>
 					   <span style={{fontSize:"10px"}}>{ReviewData[key].BUYER_COMPANY_NAME !== "" ? '|' : '' } </span>
-					   <span className={classes.LocationTag}>{ReviewData[key].BUYER_CITY_NAME}</span> {ReviewData[key].BUYER_CITY_NAME === "" ? '' : ',' } <span className={classes.LocationTag}>{ReviewData[key].BUYER_COUNTRY_NAME}</span>
+					   <span className={classes.LocationTag}>{ReviewData[key].BUYER_CITY_NAME}</span>{ReviewData[key].BUYER_CITY_NAME === "" ? '' : ', '}<span className={classes.LocationTag}>{ReviewData[key].BUYER_STATE_NAME}</span>
                           </td>
                        : 
                        <td style={{width:"65%",textAlign:"left" , lineHeight:"1rem"}} >
@@ -577,13 +578,13 @@ export default function CenteredGrid(props) {
 					   {ReviewData[key].SUPPLIER_COMMENTS !== "" ?  
 					   	  <tr>
                         <td colspan="2" style={{textAlign:"left",color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}><span>Seller replied</span></td>
-						<td colspan ="1"><p style={{color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}>{ReviewData[key].GLUSR_RATING_REPLY_DATE}</p></td>                    						
+						<td colspan ="1"><p style={{color:"#585857",fontSize:"13px",marginBottom:"0.5rem",fontFamily:"Arial"}}>{ReviewData[key].GLUSR_RATING_REPLY_DATE ? formatDate(ReviewData[key].GLUSR_RATING_REPLY_DATE): ""}</p></td>                    						
                       </tr>	
 					   : null}
 					    {ReviewData[key].SUPPLIER_COMMENTS !== "" ? 
 					  <tr>
 					  	<td colspan = "3" style={{textAlign:"left"}}>
-						<Typography component="p" style={{color:"#000"}}>{ReviewData[key].GLUSR_RATING_COMMENTS}</Typography>
+						<Typography component="p" style={{color:"#000"}}>{ReviewData[key].SUPPLIER_COMMENTS}</Typography>
 						</td> 
 					  </tr>
 						:null}

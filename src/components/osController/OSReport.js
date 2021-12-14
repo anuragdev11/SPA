@@ -393,6 +393,8 @@ class OSReport extends React.Component {
                                 toastr.error("Some error occured! Please try again")
                             } else {
                                 if (body.status !== 204) {
+                                    console.log("body")
+                                    console.log(body)
                                     bodyData = body
                                 }
                             }
@@ -674,6 +676,9 @@ class OSReport extends React.Component {
                     }
                 }).catch(error => {toastr.error("Some error occured! Please try again")})
 
+            console.log("Deals bodyData");
+            console.log(bodyData);
+
             if (bodyData.data) {
                 let columns = [];
                 let count = bodyData.data.count;
@@ -723,6 +728,10 @@ class OSReport extends React.Component {
                             data1.push(val)
                         }
                     });
+
+                    console.log("Deals completeData");
+                    console.log(completeData);
+
                     await this.setState({
                         showProgress: progressStatus,
                         showTable: true,
@@ -1245,6 +1254,9 @@ class OSReport extends React.Component {
                 >
                     {this.state.showProgress?<div className="mod d-flex justify-content-center align-items-center"><img src={Loader} height="100px" width="100px" className="loader"/></div>:""}
                     {this.state.tables.map((val,index)=>{
+                        console.log("Out")
+                        console.log(index)
+                        console.log(val)
                         return (
                             <OSTable showChild={this.showChild.bind(this)} showDeals={this.showDeals.bind(this)} defaultPaging={true} info={true} location={index} data={val} style={{marginTop: index===0?"0":"20px"}}/>
                         )
